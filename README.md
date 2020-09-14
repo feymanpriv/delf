@@ -1,10 +1,11 @@
 # Install DELF(DELG) 
 ```
 git clone https://github.com/tensorflow/models.git
-cd models/research/delf/delf/python/training
 
-rm install_delf.sh 
-wget http://yq01-sys-hic-k8s-v100-box-a223-0091.yq01.baidu.com:8903/models/research/delf/delf/python/training/install_delf.sh
+cd models/research/delf/ && rm -rf ./delf
+git clone https://github.com/feymanpriv/delf.git
+
+cd models/research/delf/delf/python/training
 bash install_delf.sh
 ```
 
@@ -15,8 +16,6 @@ http://yq01-sys-hic-k8s-v100-box-a223-0091.yq01.baidu.com:8903/models/research/d
 
 # Training
 ```
-rm train.py && wget http://yq01-sys-hic-k8s-v100-box-a223-0091.yq01.baidu.com:8903/models/research/delf/delf/python/training/train.py
-
 python train.py \
     --train_file_pattern=gldv2_dataset/tfrecord/train* \
     --validation_file_pattern=gldv2_dataset/tfrecord/validation* \
