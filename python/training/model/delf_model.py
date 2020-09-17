@@ -1,4 +1,3 @@
-# Lint as: python3
 # Copyright 2020 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +20,7 @@
 
 import tensorflow as tf
 
-from delf.python.training.model import resnet50 as resnet
+from delf.python.training.model import efficientnetb7 as efficientnet
 
 layers = tf.keras.layers
 reg = tf.keras.regularizers
@@ -111,8 +110,8 @@ class Delf(tf.keras.Model):
     """
     super(Delf, self).__init__(name=name)
 
-    # Backbone using Keras ResNet50.
-    self.backbone = resnet.ResNet50(
+    # Backbone using Keras efficientNetb7.
+    self.backbone = efficientnet.efficientNetb7(
         'channels_last',
         name='backbone',
         include_top=False,
@@ -163,3 +162,4 @@ class Delf(tf.keras.Model):
   def call(self, input_image, training=True):
     _, probs, features = self.build_call(input_image, training=training)
     return probs, features
+
