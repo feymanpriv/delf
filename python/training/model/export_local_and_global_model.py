@@ -25,7 +25,10 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-
+import sys
+BASE =os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+sys.path.insert(0, BASE)
+print(BASE)
 from absl import app
 from absl import flags
 import tensorflow as tf
@@ -36,9 +39,9 @@ from delf.python.training.model import export_model_utils
 
 FLAGS = flags.FLAGS
 
-flags.DEFINE_string('ckpt_path', '/tmp/delf-logdir/delf-weights',
+flags.DEFINE_string('ckpt_path', '/root/paddlejob/workspace/env_run/yangmin09/models/research/delf/delf/python/training/output2/delg_tf2-ckpt',
                     'Path to saved checkpoint.')
-flags.DEFINE_string('export_path', None, 'Path where model will be exported.')
+flags.DEFINE_string('export_path', '/root/paddlejob/workspace/env_run/yangmin09/models/research/delf/delf/python/training/output2/a.pb', 'Path where model will be exported.')
 flags.DEFINE_boolean('delg_global_features', True,
                      'Whether the model uses a DELG-like global feature head.')
 flags.DEFINE_float(
@@ -138,7 +141,12 @@ def main(argv):
 
   # Load the weights.
   checkpoint_path = FLAGS.ckpt_path
-  module.LoadWeights(checkpoint_path)
+  optimizer = tf.keras.optimizers.SGD(learning_rate=0.0025, momentum=0.9)
+
+
+  # Setup checkpoint directory.
+  checkpoint = tf.train.Checkpoint(optimizer=optimizer, model=module)
+  checkpoint.restore(tf.train.latest_checkpoint(checkpoint_path))
   print('Checkpoint loaded from ', checkpoint_path)
 
   # Save the module
