@@ -32,9 +32,9 @@ import tensorflow as tf
 import tensorflow_probability as tfp
 
 # Placeholder for internal import. Do not remove this line.
-from delf.python.training.datasets import googlelandmarks as gld
-from delf.python.training.model import delf_model
-from delf.python.training.model import delg_model
+from datasets import googlelandmarks as gld
+from model import delf_model
+from model import delg_model
 
 FLAGS = flags.FLAGS
 

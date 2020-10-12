@@ -35,15 +35,14 @@ handle_exit_code() {
 
 install_tensorflow() {
   # Install TensorFlow 2.2.
-  echo "Installing TensorFlow 2.2"
-  pip install --upgrade tensorflow==2.2.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+  echo "Installing TensorFlow 2.3"
+  pip install --upgrade tensorflow==2.3.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
   local exit_code=$?
-  handle_exit_code ${exit_code} "Unable to install Tensorflow 2.2."
-  echo "Installing TensorFlow 2.2 for GPU"
-  #pip install --upgrade tensorflow-gpu==2.2.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
-  pip install --upgrade tensorflow-gpu==2.2.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+  handle_exit_code ${exit_code} "Unable to install Tensorflow 2.3."
+  echo "Installing TensorFlow 2.3 for GPU"
+  pip install --upgrade tensorflow-gpu==2.3.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/
   local exit_code=$?
-  handle_exit_code ${exit_code} "Unable to install Tensorflow for GPU 2.2.0."
+  handle_exit_code ${exit_code} "Unable to install Tensorflow for GPU 2.3.0."
 }
 
 install_tf_slim() {
@@ -139,14 +138,14 @@ post_install_check() {
 install_delf() {
   # Orchestrates DELF package installation.
   install_tensorflow
-  install_tf_slim
+  #install_tf_slim
   download_protoc
   compile_delf_protos
   cleanup_protoc
   install_python_libraries
-  install_object_detection
-  install_delf_package
-  post_install_check
+  #install_object_detection
+  #install_delf_package
+  #post_install_check
 }
 
 install_delf

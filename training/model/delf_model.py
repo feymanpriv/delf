@@ -20,7 +20,7 @@
 
 import tensorflow as tf
 
-from delf.python.training.model import efficientnetb7 as efficientnet
+from model import efficientnetb7 as efficientnet
 
 layers = tf.keras.layers
 reg = tf.keras.regularizers

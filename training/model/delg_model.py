@@ -25,7 +25,7 @@ import math
 from absl import logging
 import tensorflow as tf
 
-from delf.python.training.model import delf_model
+from model import delf_model
 
 layers = tf.keras.layers
 

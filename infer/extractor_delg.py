@@ -120,6 +120,8 @@ def CalculateKeypointCenters(boxes):
         centers: [N, 2] float tensor.
     """
     return tf.divide(
-        tf.add(
-            tf.gather(boxes, [0, 1], axis=1), tf.gather(boxes, [2, 3], axis=1)),
-            2.0)
+             tf.add(
+               tf.gather(boxes, [0, 1], axis=1), 
+               tf.gather(boxes, [2, 3], axis=1)
+             ), 2.0
+           )
