@@ -23,5 +23,11 @@ python train.py \
 
 # Visualize
 ```
+training curve shows below.
+![](./examples/images/loss_desc_crossentropy.svg)
+![](./examples/images/loss_attn_crossentropy.svg)
+![](./examples/images/train_accuracy_desc.svg)
+![](./examples/images/train_accuracy_attn.svg)
+
 tensorboard --logdir ./output/train_logs/ --port 8198 --host /your/ip/address
 ```
