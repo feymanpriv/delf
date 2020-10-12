@@ -7,7 +7,7 @@ bash install.sh
 ```
 
 # Prepare Dataset(gldv2-clean)
-refer [`training/DELG.md`]
+refer [`training/DELG.md`](training/DELG.md)
 
 # Training
 ```
